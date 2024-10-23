@@ -1,0 +1,124 @@
+.containerClasses {
+    padding: 1rem;
+    background-color: var(--background-light, #fdf3f3); // White background in light mode
+    border-radius: 12px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease, background-color 0.3s ease;
+    min-height: 300px;
+  
+    &:hover {
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    }
+  }
+  
+  h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: var(--color-text-light, #3a1f24); // Tinto for text in light mode
+    display: flex;
+    align-items: center;
+  
+    span {
+      margin-left: 0.5rem;
+      font-size: 0.875rem;
+      color: var(--text-muted, #6b7280);
+    }
+  }
+  
+  
+  
+  .droppableArea {
+    min-height: 200px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  
+  .taskCard {
+    background-color: var(--card-bg-light, #ffffff);
+    border-radius: 8px;
+    padding: 1rem;
+    border: 1px solid var(--card-border-light, #e5e7eb);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    transition: all 0.2s ease;
+  
+    &:hover {
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+  
+    &.isDragging {
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+      transform: rotate(2deg);
+      border-color: var(--drag-border, #d4af37); // Gold for dragging border
+    }
+  
+    h4 {
+      background-color: #f9f6f5;
+      font-size: 1rem;
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+      color: var(--color-text-light, #3a1f24); // Tinto for text in light mode
+    }
+  
+    p {
+      font-size: 0.875rem;
+      color: var(--text-muted, #6b7280);
+    }
+  
+    .createdAt {
+      margin-top: 0.75rem;
+      font-size: 0.75rem;
+      color: var(--text-muted, #9ca3af);
+    }
+  }
+  
+  .emptyState {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100px;
+    border: 2px dashed var(--border-dashed, #d1d5db);
+    border-radius: 8px;
+    color: var(--text-muted, #6b7280);
+    font-size: 0.875rem;
+  }
+  
+  // Dark Mode
+  @media (prefers-color-scheme: dark) {
+    
+    .containerClasses {
+      background-color: var(--background-dark, #3a1f24); // Dark tinto for background
+    }
+  
+    h3 {
+      color: var(--text-light, #f9f6f5); // White for text in dark mode
+  
+      span {
+        color: var(--text-muted-dark, #9ca3af);
+      }
+    }
+  
+    .taskCard {
+      background-color: var(--card-bg-dark, #374151);
+      border-color: var(--card-border-dark, #4b5563);
+  
+      &:hover {
+        box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+      }
+  
+      h4, p {
+        color: var(--text-light, #f9f6f5); // White for text in dark mode
+      }
+  
+      .createdAt {
+        color: var(--text-muted-dark, #9ca3af);
+      }
+    }
+  
+    .emptyState {
+      border-color: var(--border-dashed-dark, #4b5563);
+      color: var(--text-muted-dark, #9ca3af);
+    }
+  }
+  

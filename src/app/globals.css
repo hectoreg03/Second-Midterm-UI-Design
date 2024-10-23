@@ -1,0 +1,80 @@
+:root {
+  --color-bg-light: #f9f6f5; /* Blanco suave para el fondo en modo claro */
+  --color-bg-dark: #3a1f24;  /* Tinto oscuro para el fondo en modo oscuro */
+  --color-text-light: #3a1f24; /* Tinto como color de texto en modo claro */
+  --color-text-dark: #f9f6f5;  /* Blanco suave para el texto en modo oscuro */
+  --color-accent-light: #d4af37; /* Dorado como color terciario en modo claro */
+  --color-accent-dark: #d4af37;  /* Mantiene el dorado en modo oscuro */
+  
+  --card-inactive: #27272a; /* Fondo inactivo para tarjetas */
+  --card-hover: #3f3f46;    /* Fondo para tarjetas al pasar el mouse */
+  --button-hover: #d8681d;  /* Color de fondo para botones al pasar el mouse */
+  --task-column-bg: #18181b; /* Fondo de columna de tareas */
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+body {
+  color: var(--color-text-light); /* Color de texto claro en modo claro */
+  background: var(--color-bg-light); /* Fondo claro en modo claro */
+  font-family: var(--font-geist-sans), system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body,
+.page-root,
+.carousel-day,
+.add-task-button,
+.modal-content,
+.columns {
+  transition: all 0.3s ease; /* Transiciones suaves para los elementos */
+}
+
+[data-theme="light"] {
+  body {
+    color: var(--color-text-light);
+    background: var(--color-bg-light);
+  }
+}
+
+[data-theme="dark"] {
+  body {
+    color: var(--color-text-dark);
+    background: var(--color-bg-dark);
+  }
+}
+
+/* Estilos adicionales para tarjetas y botones */
+.card {
+  background-color: var(--card-inactive); /* Fondo inactivo para tarjetas */
+  transition: background-color 0.3s; /* Transición suave para el fondo */
+}
+
+.card:hover {
+  background-color: var(--card-hover); /* Fondo de tarjeta al pasar el mouse */
+}
+
+.button {
+  transition: background-color 0.3s; /* Transición suave para el botón */
+}
+
+.button:hover {
+  background-color: var(--button-hover); /* Color de botón al pasar el mouse */
+}
+
+/* Estilos para la columna de tareas */
+.task-column {
+  background-color: var(--task-column-bg); /* Fondo de columna de tareas */
+}
