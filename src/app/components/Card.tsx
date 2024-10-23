@@ -1,5 +1,7 @@
 import React from "react";
-import { Draggable, Droppable } from "react-beautiful-dnd";
+import { useDroppable } from "@dnd-kit/core";
+import { SortableContext, verticalListSortingStrategy, useSortable } from "@dnd-kit/sortable";
+import { CSS } from "@dnd-kit/utilities";
 import './Card.scss'; // Aquí importas el archivo SCSS
 
 interface Task {
@@ -17,7 +19,39 @@ interface CardProps {
   items: Task[];
 }
 
+// Helper for sortable items
+const SortableItem = ({ id, task }: { id: string; task: Task }) => {
+  const { attributes, listeners, setNodeRef, transform, transition, isDragging } = useSortable({
+    id,
+  });
+  
+  const style = {
+    transform: CSS.Transform.toString(transform),
+    transition,
+  };
+
+  return (
+    <div
+      ref={setNodeRef}
+      style={style}
+      {...attributes}
+      {...listeners}
+      className={`taskCard ${isDragging ? "isDragging" : ""}`}
+    >
+      <h4 className="font-medium text-gray-800 dark:text-white mb-2">{task.content.title}</h4>
+      <p className="text-sm text-gray-600 dark:text-gray-300">{task.content.description}</p>
+      {task.content.createdAt && (
+        <div className="createdAt">
+          Created: {new Date(task.content.createdAt).toLocaleDateString()}
+        </div>
+      )}
+    </div>
+  );
+};
+
 export default function Card({ id, title, items }: CardProps) {
+  const { setNodeRef } = useDroppable({ id });
+
   return (
     <div className="containerClasses">
       <h4>{title}</h4>
@@ -29,50 +63,18 @@ export default function Card({ id, title, items }: CardProps) {
         )}
       </h3>
 
-      <Droppable droppableId={id}>
-        {(provided) => (
-          <div
-            {...provided.droppableProps}
-            ref={provided.innerRef}
-            className="droppableArea"
-          >
-            {items.map((item, index) => (
-              <Draggable key={item.id} draggableId={item.id} index={index}>
-                {(provided, snapshot) => (
-                  <div
-                    ref={provided.innerRef}
-                    {...provided.draggableProps}
-                    {...provided.dragHandleProps}
-                    className={`taskCard ${
-                      snapshot.isDragging ? "isDragging" : ""
-                    }`}
-                  >
-                    <h4 className="font-medium text-gray-800 dark:text-white mb-2">
-                      {item.content.title}
-                    </h4>
-                    <p className="text-sm text-gray-600 dark:text-gray-300">
-                      {item.content.description}
-                    </p>
-                    {item.content.createdAt && (
-                      <div className="createdAt">
-                        Created: {new Date(item.content.createdAt).toLocaleDateString()}
-                      </div>
-                    )}
-                  </div>
-                )}
-              </Draggable>
-            ))}
-            {provided.placeholder}
-            {items.length === 0 && (
-              <div className="emptyState">
-                <p className="text-sm text-gray-500 dark:text-gray-400">
-                  Drop items here
-                </p>
-              </div>
-            )}
-          </div>
-        )}
-      </Droppable>
+      <SortableContext id={id} items={items.map((task) => task.id)} strategy={verticalListSortingStrategy}>
+        <div ref={setNodeRef} className="droppableArea">
+          {items.map((item) => (
+            <SortableItem key={item.id} id={item.id} task={item} />
+          ))}
+          {items.length === 0 && (
+            <div className="emptyState">
+              <p className="text-sm text-gray-500 dark:text-gray-400">Drop items here</p>
+            </div>
+          )}
+        </div>
+      </SortableContext>
     </div>
   );
 }

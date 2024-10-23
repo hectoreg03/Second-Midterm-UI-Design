@@ -1,0 +1,297 @@
+/*!****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[11].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[11].use[3]!./node_modules/next/dist/build/webpack/loaders/resolve-url-loader/index.js??ruleSet[1].rules[13].oneOf[11].use[4]!./node_modules/next/dist/compiled/sass-loader/cjs.js??ruleSet[1].rules[13].oneOf[11].use[5]!./src/app/components/Card.scss ***!
+  \****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+.containerClasses {
+  padding: 1rem;
+  background-color: var(--background-light, #fdf3f3);
+  border-radius: 12px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease, background-color 0.3s ease;
+  min-height: 300px;
+}
+.containerClasses:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: var(--color-text-light, #3a1f24);
+  display: flex;
+  align-items: center;
+}
+h3 span {
+  margin-left: 0.5rem;
+  font-size: 0.875rem;
+  color: var(--text-muted, #6b7280);
+}
+
+.droppableArea {
+  min-height: 200px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.taskCard {
+  background-color: var(--card-bg-light, #ffffff);
+  border-radius: 8px;
+  padding: 1rem;
+  border: 1px solid var(--card-border-light, #e5e7eb);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  transition: all 0.2s ease;
+}
+.taskCard:hover {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.taskCard.isDragging {
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  transform: rotate(2deg);
+  border-color: var(--drag-border, #d4af37);
+}
+.taskCard h4 {
+  background-color: #f9f6f5;
+  font-size: 1rem;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  color: var(--color-text-light, #3a1f24);
+}
+.taskCard p {
+  font-size: 0.875rem;
+  color: var(--text-muted, #6b7280);
+}
+.taskCard .createdAt {
+  margin-top: 0.75rem;
+  font-size: 0.75rem;
+  color: var(--text-muted, #9ca3af);
+}
+
+.emptyState {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100px;
+  border: 2px dashed var(--border-dashed, #d1d5db);
+  border-radius: 8px;
+  color: var(--text-muted, #6b7280);
+  font-size: 0.875rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  .containerClasses {
+    background-color: var(--background-dark, #3a1f24);
+  }
+  h3 {
+    color: var(--text-light, #f9f6f5);
+  }
+  h3 span {
+    color: var(--text-muted-dark, #9ca3af);
+  }
+  .taskCard {
+    background-color: var(--card-bg-dark, #374151);
+    border-color: var(--card-border-dark, #4b5563);
+  }
+  .taskCard:hover {
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+  }
+  .taskCard h4, .taskCard p {
+    color: var(--text-light, #f9f6f5);
+  }
+  .taskCard .createdAt {
+    color: var(--text-muted-dark, #9ca3af);
+  }
+  .emptyState {
+    border-color: var(--border-dashed-dark, #4b5563);
+    color: var(--text-muted-dark, #9ca3af);
+  }
+}
+/*!**************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[10].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[10].use[3]!./src/app/page.css ***!
+  \**************************************************************************************************************************************************************************************************************************************************************/
+:root {
+    --color-bg-light: #f9f6f5; /* Blanco suave para el fondo en modo claro */
+    --color-bg-dark: #3a1f24;  /* Tinto oscuro para el fondo en modo oscuro */
+    --color-text-light: #3a1f24; /* Tinto como color de texto en modo claro */
+    --color-text-dark: #f9f6f5;  /* Blanco suave para el texto en modo oscuro */
+    --color-accent-light: #d4af37; /* Dorado como color terciario en modo claro */
+    --color-accent-dark: #d4af37;  /* Mantiene el dorado en modo oscuro */
+}
+  
+[data-theme="light"] {
+    --bg-color: var(--color-bg-light);
+    --text-color: var(--color-text-light);
+    --accent-color: var(--color-accent-light);
+}
+  
+[data-theme="dark"] {
+    --bg-color: var(--color-bg-dark);
+    --text-color: var(--color-text-dark);
+    --accent-color: var(--color-accent-dark);
+}
+  
+body {
+    transition: background-color 0.3s, color 0.3s;
+}
+  
+.task-manager {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    min-height: 100vh;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+  
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem;
+}
+  
+.header {
+    margin-bottom: 2rem;
+}
+  
+.header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+  
+.navigation {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 20px;
+}
+  
+.days-carousel { 
+    display: flex;
+    flex-direction: column; /* Arrange buttons vertically */
+    padding-bottom: 10px; /* Add some padding */
+    border-right: 1px solid #ccc; /* Optional: border for separation */
+    width: 200px; /* Fixed width for the carousel */
+}
+  
+.day-button {
+    margin: 5px 0; 
+    padding: 0.5rem 1rem;
+    border-radius: 0.375rem;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    border: 1px solid var(--text-color);
+}
+
+.nav-button {
+    margin: 5px 0; 
+    padding: 0.5rem 1rem;
+    border-radius: 0.375rem;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    border: 1px solid var(--text-color);
+}
+
+/* New active state for navigation buttons */
+.nav-button:active {
+    background-color: var(--accent-color); /* Background color when pressed */
+    color: white; /* Text color when pressed */
+    transition: background-color 0.2s ease; /* Smooth transition */
+}
+  
+.nav-button.selected {
+    background-color: var(--accent-color); /* Usa dorado para la selección */
+    color: white;
+}
+
+.day-button.selected {
+    background-color: var(--accent-color); /* Usa dorado para la selección */
+    color: white;
+}
+  
+.tasks-grid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 1.5rem;
+    flex: 1; /* Allow tasks grid to take up remaining space */
+}
+
+.main-content {
+    display: flex; /* Enable flexbox for container */
+    flex: 1; /* Allow the container to take up remaining space */
+}
+
+@media (min-width: 768px) {
+    .tasks-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+  
+.add-task-button {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    background-color: var(--accent-color); /* Dorado para el botón en ambos modos */
+    color: white;
+    border-radius: 50%;
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+  
+.add-task-button:hover {
+    background-color: #b8860b; /* Un dorado más oscuro al hacer hover */
+}
+  
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+}
+  
+.modal {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+    max-width: 400px;
+    width: 100%;
+}
+  
+.modal input,
+.modal textarea {
+    width: 100%;
+    padding: 0.75rem;
+    margin-bottom: 1rem;
+    border: 1px solid var(--text-color);
+    border-radius: 0.375rem;
+}
+  
+.modal-actions {
+    display: flex;
+    gap: 1rem;
+}
+  
+.modal-actions button {
+    flex: 1;
+    padding: 0.75rem;
+    border-radius: 0.375rem;
+}
+  
+.modal-actions button:first-child {
+    background-color: var(--accent-color);
+    color: white;
+}
+  
+.modal-actions button:last-child {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
